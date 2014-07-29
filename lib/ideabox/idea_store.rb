@@ -4,8 +4,10 @@ class IdeaStore
     # create array to store multiple ideas as a collection
     @all ||= []   # <= if all is truthy, leave it alone, if not, set @all = []
     #store the idea we pass into the collection
-    idea.id = next_id
-    @all << idea
+    if idea.new?
+      idea.id = next_id
+      @all << idea
+    end
     idea.id
   end
 
@@ -27,5 +29,4 @@ class IdeaStore
   def self.delete_all
     @all.clear
   end
-
 end

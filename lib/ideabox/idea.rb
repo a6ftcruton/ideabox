@@ -1,6 +1,6 @@
 class Idea
-  attr_accessor :id
-  attr_reader :title, :description, :likes
+  attr_accessor :id, :title, :description
+  attr_reader :likes
 
   def initialize(title, description)
     @title = title
@@ -14,6 +14,17 @@ class Idea
 
   def <=>(other)
     likes <=> other.likes
+  end
+
+  def new?
+    @id.nil?
+    #!id
+  end
+
+  def test_an_old_idea
+    idea = Idea.new('drink', 'lots of water')
+    idea.id = 1
+    refute idea.new?
   end
 
 end
