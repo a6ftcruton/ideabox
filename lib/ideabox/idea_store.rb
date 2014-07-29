@@ -24,4 +24,8 @@ class IdeaStore
     count + 1
   end
 
+  def self.delete_all
+    @all.clear
+  end
+
 end

@@ -6,6 +6,10 @@ require './lib/ideabox/idea_store'
 
 
 class IdeaStoreTest < Minitest::Test
+  def teardown
+    IdeaStore.delete_all
+  end
+
   def test_save_and_retrieve_an_idea
       idea = Idea.new('celebrate', "with champagne")
       id = IdeaStore.save(idea)
@@ -28,9 +32,9 @@ class IdeaStoreTest < Minitest::Test
     assert_equal "celebrate", found_idea1.title
     assert_equal "with champagne", found_idea1.description
 
-    found_idea3 = IdeaStore.find(id3)
-    assert_equal "celebrate", found_idea3.title
-    assert_equal "with champagne", found_idea3.description
+    found_idea2 = IdeaStore.find(id2)
+    assert_equal "dream", found_idea2.title
+    assert_equal "of unicorns and rainbows", found_idea2.description
 
   end
 end
